@@ -19,16 +19,27 @@ body {
     text-shadow: 1px 2px #394141;
   
 }
+
+#mapPanel{
+    text-shadow: none;
+}
 form{
-   box-shadow: 2px 2px 1px black;
-   border: 3px solid #FFFFFF;  
+   box-shadow: 2px 2px 1px  black;
+   border: 3px solid deepskyblue;  
+   padding: 5px;
 }
 
+ #dpanel {
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
 table{
     width:100%;
     align-content: center;
     font-size:22px;
     border: 3px solid #FFFFFF;    
+    
 }
 
 .centerDiv{
@@ -70,7 +81,7 @@ input[type=text] {
     align-content: left;
     padding: 10px;
     width: 20%;
-    height:30px;
+    height:24px;
     border: solid 2px #dcdcdc;
     transition: box-shadow 0.3s, border 0.3s;
 }
@@ -94,7 +105,7 @@ table{
     width:80%;
     align-content: center;
     height:500px;
-    border: 'FFFFFF';
+/*    border: 'dash deepskyblue';*/
      
 }
 /*
@@ -105,7 +116,7 @@ td{
 */
 button {
   padding:5px;
-  border: 1px solid #FFFFFF;
+  border: 3px solid #FFFFFF;
   color:#FFFFFF;
   text-decoration:none;
   background-color: Transparent;

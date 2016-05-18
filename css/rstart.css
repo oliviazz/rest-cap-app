@@ -1,6 +1,6 @@
 /*
 ============================================
-index.css | CSS file for restaurant cap app
+rstart.css | CSS file for restaurant cap app
 Olivia Zhang     February 1, 2016 
 Computer Systems Research Lab
 ============================================
@@ -10,7 +10,7 @@ body {
     font-family:Arial,Verdana,Tahoma, Geneva, sans-serif;
     text-align: center;
     background-size: 100%;
-    font-size: 23px;
+    font-size: 20px;
     align-content: center;
     color:white;
     display: relative;
@@ -21,7 +21,7 @@ body {
 table{
     width:100%;
     align-content: center;
-    font-size:22px;
+    font-size:20px;
     border: 3px solid deepskyblue;
     border-collapse: collapse;
     background-color: white;
@@ -34,7 +34,7 @@ tr{
 }
 
 th,td{
-   padding: 15px; 
+   padding: 10px; 
     
 }
 .centerDiv{
@@ -45,24 +45,27 @@ th,td{
 }
 
 #startLocBox{
-    
     height:15px;
-    width:60px;
+    width:100px;
 }
 
 #searchResults{
-    margin-left: 155px;
+    margin-left: 75px;
     text-align: left;
     align-content: center;
-    width: 75%;
+    width: 90%;
+    font-size:16px;
 }
 
 #form2{
     margin: 10px 10px 10px 10px;
     background-color:#32cbff;
-    padding:3px;
-    width:50%;
-    margin-left:300px;
+    padding:7px;
+    width:60%;
+    align-content: center;
+    align-self: center;
+    margin: auto;
+    margin-top: 10px;
     height:40px;
     font-size: 16px;
     box-shadow: 3px 3px 3px #575757;
@@ -114,16 +117,28 @@ a:hover{
     font-weight: bold;
 }
 button {
-  padding:5px;
   border: 3px solid #FFFFFF;
   color:#FFFFFF;
   text-decoration:none;
   background-color: Transparent;
-  height: 30px;
-  width: 100px;
-  margin-left: 10px;
+  height: 20px;
+  width:15px;
   font-size: 15px;
   text-shadow: 2px 2px 2px #000000;
+  box-shadow: 2px 2px 2px #000000;
+  
+}
+
+#sBut {
+  padding:2px;
+  border: lawngreen;
+  color:#000000;
+  text-decoration:none;
+  background-color: lawngreen;
+  height: 30px;
+  width: 80px;
+  text-shadow: none;
+    margin: 10px;
   box-shadow: 2px 2px 2px #000000;
   
 }
@@ -134,8 +149,8 @@ button {
   text-decoration:none;
   background-color: Transparent;
   height: 50px;
-  width: 175px;
-  margin-left: 10px;
+  width: 20px;
+  margin: 10px;
   font-size: 25px;
   
 }
@@ -169,8 +184,9 @@ button {
 input[type=text] {
     align-content: left;
     padding: 10px;
-    width: 20%;
+    
     height:30px;
+    
     border: solid 2px #dcdcdc;
     transition: box-shadow 0.3s, border 0.3s;
 }
@@ -178,11 +194,18 @@ input[type="text"].focus {
   border: solid 1px #66b2ff;
   box-shadow: 0 0 5px 1px #66b2ff;
 }
+/*
+input[type="submit"] {
+  border: solid 1px #66b2ff;
+  box-shadow: 0 0 5px 1px #66b2ff;
+  width:20px;
+}
+*/
 
 select{
     align-content: left;
     padding: 10px;
-    width: 19%;
+    width: 12%;
     height:30px;
     border: solid 2px #dcdcdc;
     transition: box-shadow 0.3s, border 0.3s;

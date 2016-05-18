@@ -1,0 +1,52 @@
+body {
+    font-family:Geneva, Tahoma, Verdana, sans-serif;
+    text-align: center;
+    background-size: 100%;
+    font-size: 23px;
+    color:white;
+    background-color: #d1d1f6;
+    background-image: url('restaurant_ambiance.jpg');
+    /*background-image: url('http://wallpaperlepi.com/wp-content/uploads/2014/09/Sky-and-Mountain-Sunset-Wallpaper-Android.jpg');/*url('http://intelligenttravel.nationalgeographic.com/files/2015/08/kilimanjaro-above-clouds-sunset-590-590x392.jpg');*/
+
+}
+table{
+    width:80%;
+    align-content: center;
+    border: 'FFFFFF';
+     
+}
+button {
+  padding:5px;
+  border: 1px solid #FFFFFF;
+  color:#FFFFFF;
+  text-decoration:none;
+  background-color: Transparent;
+  height: 40px;
+  width: 70px;
+  margin-left: 10px;
+  font-size: 15px;
+  
+}
+#startButton{
+  padding:5px;
+  border: 1px solid #FFFFFF;
+  color:#FFFFFF;
+  text-decoration:none;
+  background-color: Transparent;
+  height: 40px;
+  margin-left: 10px;
+  font-size: 22px;
+   width: 115px; 
+}
+
+input[type=text] {
+ align-content: center;
+ padding: 10px;
+    width: 15%;
+    height:20px;
+  border: solid 2px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+
+
+

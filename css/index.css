@@ -59,6 +59,21 @@ a:hover{
     text-shadow: 3px 3px #000000;
 }
 
+#sBut{
+   align-self: center;
+    padding:5px;
+  border: 5px solid #FFFFFF;
+  color:#FFFFFF;
+  text-decoration:none;
+  background-color: Transparent;
+  height: 40px;
+  width: 155px;
+  margin: auto;
+  font-size: 20px;
+    text-shadow: 2px 2px 2px #000000;
+  box-shadow: 2px 2px 2px #000000;
+}
+
 #mssg{
     align-content: center;
     margin-left: 400px;
