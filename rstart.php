@@ -6,7 +6,7 @@ session_start();
  <html>
  <head>
   <title>Restaurant Search Results</title>
-      <link rel="stylesheet" href="CSS/rstart.css" type="text/css">
+      <link rel="stylesheet" href="rstart.css" type="text/css">
  </head>
  <body>
     <br><br>
@@ -39,7 +39,7 @@ session_start();
             $name = $_POST['name'];
             $term = $_POST['foodType'];
             $numResults = intval($_POST['numResults']);
-            $startLoc = $_POST['startLoc'];
+            $startLoc = urldecode($_POST['startLoc']);
             $foodType = $_POST['foodType'];
           }
             
@@ -101,7 +101,7 @@ session_start();
             <input id = "sBut" type="submit" accesskey="s" name="submit" value = "Submit" onClick = "showLoad()"> 
          </div>
          <div id = "loadPic" style = "visibility:hidden;">
-    <font color = "limegreen" size = "2">Recalculating . . .</font><img src= 51.gif  >
+    <font color = "limegreen" size = "5">Recalculating . . .</font><img src= 51.gif  >
         </div>
      <br><br><br>
      </form>
@@ -148,7 +148,19 @@ session_start();
                 //echo($geocode_url. "<br>");
                 //echo($startLat. $startLng);
                 
+            class MyDB extends SQLite3
+            {
+                function __construct(){
+                    $this->open('restapp.db');
+                }
+            }
             
+            $db = new MyDB();
+            if(!$db){
+                echo $db->lastErrorMsg();
+            }
+            else{
+            }
           
             for ($i = 0; $i < $numResults; $i++){
                
@@ -157,6 +169,7 @@ session_start();
                 $restLat = trim($lat[0][$i]);
                 $restLong = trim($long[0][$i]);
                 $waitTime = 0;
+                $city = explode(",", $my_location)[0];
                 
                 
                 
@@ -168,8 +181,8 @@ session_start();
                 $myDis = ($routes->elements[0]->distance->text);
                 $myTime = ($routes->elements[0]->duration->text);
 //                echo($myDis.$myTime);
-            
-                $openTable_url = 'https://opentable.herokuapp.com/api/restaurants?country=US&name='.$restName.'';
+                $restNameOT = str_replace('_', '%20', $restName);
+                $openTable_url = 'https://opentable.herokuapp.com/api/restaurants?country=US&name='.$restNameOT.'&city='.urlencode($city);
                 $price = json_decode(file_get_contents($openTable_url))->restaurants[0]->price;
                 $reserveURL = json_decode(file_get_contents($openTable_url))->restaurants[0]->reserve_url;
                 print("<tr><td align = \"center\" class = blackname>".$restNameFormat." </td>");
@@ -188,14 +201,12 @@ session_start();
                     $priceVal = 1.0;
                 }
                 
-                $waitTime = calcCurWait();
-                
-                //Convert to float so it displays properly
+                $waitTime = calcCurWait($restNameFormat, $db);
                 $waitTime = floatval($waitTime)*floatval($priceVal);
                 //echo($waitTime);
-                
+                $yelpLink = $url[0][$i];
                 print('</td>');
-                print("<td><a href = ".$url[0][$i]." target=\"_blank\" class = yelp>Yelp: [".$rating[0][$i]." / 5 ]</a> </td>");
+                print("<td><a href = ".$yelpLink." target=\"_blank\" class = yelp> ".$rating[0][$i]." / 5  [Yelp] </a> </td>");
                 print("<td>");
                 if(!is_null($reserveURL)){
                     print("<a href = ".$reserveURL." target=\"_blank\" >Reserve</a>");
@@ -207,7 +218,24 @@ session_start();
             print('<td>'.($waitTime + $myTime).' min to seat ('. $trafHTML. ', '.$reserveHTML.') </td>');
              
             print("</tr>"); 
+            
+            $restNameFormat = str_replace("'","''",$restNameFormat);
+            #put restaurant info into database
+            $sqltxt = "
+            INSERT or REPLACE INTO RestaurantData( Name, Location, YelpLink, Lat, Long, Reviews)
+            VALUES ('$restNameFormat',  '$my_location ',' $yelpLink','$restLat', '$restLong','0');";
+            
+            $ret = $db->exec($sqltxt);
+
+            if(!$ret){
+                echo $db->lastErrorMsg();
+       
             }
+            else{
+                
+            }
+        }
+        
            
             $_SESSION['restName'] = $allRestNames[0][0];
             $_SESSION['latitude'] = $lat[0][0];
@@ -263,20 +291,19 @@ session_start();
         
 
 
-    function calcCurWait(){
+    function calcCurWait($restName, $db){
        
         $dayofWeek =  date("l");
         $currentHour = date("g");
       
+        
         #---------Hour values
-       
         if($currentHour < 10 && $currentHour >= 6 && strpos(date("A"), 'PM') !== false){
                 $hourVal = 3;        
         }
         else if (intval($currentHour) < 2 &&  intval($currentHour) > 12 && strpos($currentTime, 'pm') !== false){
                 $hourVal = 2;
         }
-        
         else{
                 $hourVal = 1;
         }
@@ -296,7 +323,40 @@ session_start();
             default:
                 $dayVal = 1;
         }
+       
+        
         $waitTime = ($dayVal*$hourVal) + 2;
+        
+        $results = $db->query('SELECT * FROM CapacityReviews'); 
+        if(!$results){
+                    echo $db->lastErrorMsg(); 
+                }
+        else{
+        while ($row = $results->fetchArray()) {
+//                    //echo($restName.'<br>');
+//                    echo($row['Restaurant'].'<br>');
+                   //echo(strcmp($restName, $row['Restaurant']));
+//                    $restName = str_replace("'","''",$restName);
+                    if(strcmp($restName, $row['Restaurant']) == 6) {
+//                        echo('found!');
+                        $segments = explode(".",$row['Time']);
+                        //print_r($segments);
+                        
+                        $hourWeight = 1 - .2*( intval($currentHour) -  intval($segments[1]));
+                        if($hourWeight < 0)
+                            $hourWeight = 0;
+                        $dayWeight = .4;
+                        if( strcasecmp($segments[0], $dayofWeek) == 0){
+                            $dayWeight = .7;
+                        } 
+                      $rContribution = 4*intval($row['Capacity']);
+                     $waitTime = round($dayWeight*$hourWeight*$rContribution + (1-$dayWeight*$hourWeight)*$waitTime);
+                    
+                    }    
+                }
+       
+        
+        }
         return $waitTime;
     }
   

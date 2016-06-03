@@ -1,0 +1,102 @@
+/*
+============================================
+index.css | CSS file for restaurant cap app
+Olivia Zhang     February 1, 2016 
+Computer Systems Research Lab
+============================================
+*/
+body {
+    font-family:Arial,Verdana,Tahoma, Geneva, sans-serif;
+    text-align: center;
+    background-size: 100%;
+    font-size: 23px;
+    color:white;
+    display: relative;
+    text-shadow: 2px 2px #000000;
+    background-color:firebrick;
+  
+}
+
+#cDiv{
+    width:60%;
+    font-style:bold; 
+    align-content: center;
+    margin:auto;
+    text-align: center;
+    background: salmon;
+    padding: 12px;
+    border: 3px solid white;
+}
+
+.su{
+    align-content: left;
+    padding: 5px;
+    margin:10px;
+    width: 10%;
+    height:10px;
+    border: solid 2px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+
+
+
+
+/*
+input[type=text] {
+    align-content: left;
+    padding: 10px;
+    margin:15px;
+    width: 20%;
+    height:10px;
+    border: solid 2px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+*/
+/*
+input[type=password] {
+    align-content: left;
+    margin:5px;
+    padding: 10px;
+    width: 10%;
+    height:10px;
+    border: solid 2px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+*/
+input[type="text"].focus {
+  border: solid 1px #66b2ff;
+  box-shadow: 0 0 5px 1px #66b2ff;
+}
+
+#loginBut{
+    color:firebrick;
+    text-decoration:none;
+    background-color: #FFFFFF;
+    height:40px;
+    font-size: 23px;
+    width: 8%;
+    border: solid 2px #dcdcdc;
+    box-shadow: 2px 2px #000000;
+    text-shadow: 1px 1px #000000;
+    margin:10px;
+    
+}
+
+select{
+    align-content: left;
+    padding: 10px;
+    width: 19%;
+    height:40px;
+    border: solid 2px #dcdcdc;
+    transition: box-shadow 0.3s, border 0.3s;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+

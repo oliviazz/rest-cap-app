@@ -6,14 +6,14 @@ session_start();
 <html>
  <head>
     <title>Restaurant Traffic View</title>
-    <link rel="stylesheet" href="CSS/traffic.css" type="text/css">
+    <link rel="stylesheet" href="traffic.css" type="text/css">
      
     <style type="text/css">
        html, body {
         height: 100%;
         margin: 0;
         padding: 0;
-           color:black;
+           color:white;
       }
       #map {
         height: 100%;
@@ -134,7 +134,7 @@ td, th {
 //have lat long start values, but still need ot communicate into calculations
         ?>
         
-         <a  href = <?php echo('rstart.php?restName='.$restName.'&foodType='.$foodType.'&startLoc='.$startLocTxt.'&location='.$location.'&myName='.$myName); ?>><i><font color = #0085b2><b>Back to Results</b></i></font></a><br>
+         <a  href = <?php echo('rstart.php?restName='.$restName.'&foodType='.$foodType.'&startLoc='.urlencode($startLocTxt).'&location='.$location.'&myName='.$myName); ?>><i><font color = #0085b2><b>Back to Results</b></i></font></a><br>
          
     <?php
         $name = str_replace('_','&nbsp;', $name); //for url passing purposes
@@ -167,10 +167,10 @@ session_start();
      </div>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js">
      </script>
-     <form id = 'newStart' action = 'traffic.php'>
+     <form id = 'newStart' action = ""+document.URL>
      Start Location: <input type = "text" id = "startLocBox" value = "" style = "color:black;" >
-     Latitude: <input type = "text" id = "lat_coord" value = "40.7127">
-     Longitude: <input type = "text" id = "long_coord" value = "-74.0059">
+     Latitude: <input type = "text" id = "lat_coord" >
+     Longitude: <input type = "text" id = "long_coord" >
          &nbsp; &nbsp; &nbsp;
      <button type = "button" id = "traffBtn" onClick = "toggleTraffic()"> Hide Traffic</button>
      <button type = "button" id = "dirBtn" onClick = "calcRoute()">Show Route</button>
@@ -182,8 +182,8 @@ session_start();
          Driving Time/Distance: 
      </div>
      <div id = "bigPanel">
-    <div id="dPanel" ></div>
-    <div id="map" align = "center"></div>
+    <div id="dPanel" style = "color:black;" ></div>
+    <div id="map" align = "center" style= "color:black;" ></div>
     </div>
     
 
@@ -218,7 +218,7 @@ session_start();
         
         
         if(lat_coord == "" || long_coord == ""){
-            lat_coord = 24.3; //Change to Current Location 
+            lat_coord = 24.3; //Default Location 
             long_coord = 29.3; //Change to Current Location 
         }
         
@@ -227,11 +227,31 @@ session_start();
           directionsService = new google.maps.DirectionsService();
           map = new google.maps.Map(document.getElementById('map'),{
             center: {lat: lat_coord, lng: long_coord},
-            zoom: 19
+            zoom: 18
             });
+            
+             var infowindow = new google.maps.InfoWindow;
+            var geocoder = new google.maps.Geocoder;
+            var latlng = {lat: lat_coord, lng: long_coord};
+//            geocoder.geocode({'location': latlng}, function(results, status) {
+//                if (status === google.maps.GeocoderStatus.OK) {
+//                  if (results[1]) {
+//                    map.setZoom(19);
+//                    var marker = new google.maps.Marker({
+//                      position: latlng,
+//                      map: map
+//                    });
+//                infowindow.setContent(results[0].formatted_address);
+//                infowindow.open(map, marker);
+//                  }
+//                }
+//            });
+        
           
           directionsDisplay.setPanel(document.getElementById("dPanel"));
-        directionsDisplay.setMap(map);
+          directionsDisplay.setMap(map);
+            var infowindow = new google.maps.InfoWindow;
+            var geocoder = new google.maps.Geocoder;
        
           trafficLayer = new google.maps.TrafficLayer();
             

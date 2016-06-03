@@ -2,7 +2,7 @@
 <html>
     <head>
     <title>Restaurant Cap App</title>
-    <link rel="stylesheet" href="CSS/index.css" type="text/css">
+    <link rel="stylesheet" href="index.css" type="text/css">
         <?php 
             $loggedIn = false;
             $username = $_GET["username"];
@@ -31,6 +31,7 @@
         <option value="Sushi">Sushi</option>
         <option value="Italian">Italian</option>
      <option value="American">American</option>
+        <option value="Steak">Steakhouse</option>
         </select>
      <br><br>
       User: &nbsp; &nbsp;<input id = namefield type="text" name="myName" /><br>
@@ -40,7 +41,7 @@
         }
         else{
             
-            echo("<i><font color = lightgrey size = 3><a href = index.php?username=> (Log Out)</font> </a></i>");
+            echo("<i><font color = lightgrey size = 3><a href = input.php?username='$username'>Submit Capacity Report </a> or <a href = index.php?username= style = color:red;> Log Out</font> </a> </i>");
         }
         ?>
 

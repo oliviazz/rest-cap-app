@@ -5,7 +5,7 @@
 <html>
     <head>
     <title>Create New Account</title>
-    <link rel="stylesheet" href="CSS/newUser.css" type="text/css">
+    <link rel="stylesheet" href="newUser.css" type="text/css">
     </head>
     <body>
          <br><br>
@@ -73,22 +73,7 @@
        //
     }
     //$db->query('DELETE FROM UserInfo');   
-        echo('Current Users: ');
-        echo('<table width = "40%" align = "center">');
-        $results = $db->query('SELECT * FROM UserInfo'); 
-        $i = 0;
-        while ($row = $results->fetchArray()) {
-            echo('<tr>');
-            echo('<td>' . $i. '</td>');
-            echo('<td>' . $row['Username'] . '</td>');
-            echo('<td>' . $row['Password'] . '</td>');
-            echo('<td>' . $row['Email'] . '</td>');
-            echo('</tr>');  
-            $i++;
-             
-        }
-        echo('</table>');
- 
+      
     
     
     
