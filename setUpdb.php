@@ -4,7 +4,7 @@
    
 
     function getDBHandle($dbFileName) // opens a connection to the SQL database in $dbFileName
-    {   $servername = "restcapapp.database.windows.net;
+    {   $servername = "restcapapp.database.windows.net";
         $user = "oliviaazhang";
         $password = "2Papayas!";
         $sqliteName = "sqlite:$dbFileName";
