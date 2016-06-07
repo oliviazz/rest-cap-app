@@ -8,13 +8,13 @@
         $user = "oliviaazhang";
         $password = "2Papayas!";
         $pwd = "2Papayas!";
-        $sqliteName = "sqlite:$dbFileName";
+        $sqliteName = "sqlite:host=$servername;dbname=$dbFileName";
         $db = 'restapp.db';
         try
         {
-            $dbh = new PDO( "mysql:host=$servername;dbname=$db", $user, $pwd);
-		    $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-            //$dbh = new PDO($sqliteName, $user, $password);
+      //      $dbh = new PDO( "mysql:host=$servername;dbname=$db", $user, $pwd);
+		    //$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+           $dbh = new PDO($sqliteName, $user, $password);
             echo('Success!');
             return $dbh;
         }
