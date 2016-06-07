@@ -57,15 +57,17 @@
      $ret = $db->exec($sqltxt);
      $ret2 = $db->exec($sqltxt2);
      $ret3 = $db->exec($sqltxt3);
- echo('potato');
+    echo('potato');
+    
      if(!$ret)
      {
-         echo $db->lastErrorMsg();
+         echo "ohno";//$db->lastErrorMsg();
      }
      else
      {
          echo "Table created successfully\n";
      }
+         echo('peeee');
      if(!$ret2||!$ret3)
      {
          echo $db->lastErrorMsg();
