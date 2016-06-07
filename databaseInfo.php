@@ -1,16 +1,17 @@
  <?php
  
- class MyDB extends SQLite3
-            {
-                function __construct(){
-                    $this->open('restapp.db');
-                }
-            }
-            $db = new MyDB();
-            if(!$db){
-                echo $db->lastErrorMsg();
-            }
-       
+ // class MyDB extends SQLite3
+ //            {
+ //                function __construct(){
+ //                    $this->open('restapp.db');
+ //                }
+ //            }
+ //            $db = new MyDB();
+ //            if(!$db){
+ //                echo $db->lastErrorMsg();
+ //            }
+   include_once('setUpdb.php');
+   $db = getDBHandle('restapp.db');
  
  $results = $db->query('SELECT * FROM CapacityReviews'); 
             echo('<p align = center>CapacityReviews</p>');
