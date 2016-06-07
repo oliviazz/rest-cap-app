@@ -1,5 +1,6 @@
 <?php  //Accesses existing database and creates tables
     include_once('setUpdb.php');
+    echo('Hi');
     class MyDB extends SQLite3
     {
        function __construct()
@@ -8,7 +9,8 @@
        }
     }
 
-    $db = new MyDB();
+    //$db = new MyDB();
+    $db = getDBHandle('restapp.db');
     if(!$db)
     {
        echo $db->lastErrorMsg();
