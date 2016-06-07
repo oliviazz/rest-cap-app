@@ -12,6 +12,7 @@
         {
             $dbh = new PDO($sqliteName, $user, $password);
             echo('Success!');
+            return $dbh;
         }
         catch(PDOException $e)
         {
