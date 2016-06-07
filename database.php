@@ -53,12 +53,12 @@
         Reviews Text);
         ";
     
-  echo('potato');
+ 
 
      $ret = $db->exec($sqltxt);
      $ret2 = $db->exec($sqltxt2);
      $ret3 = $db->exec($sqltxt3);
-
+ echo('potato');
      if(!$ret)
      {
          echo $db->lastErrorMsg();
