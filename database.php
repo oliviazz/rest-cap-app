@@ -54,9 +54,9 @@
     
  
 
-     $ret = $db->exec($sqltxt);
-     $ret2 = $db->exec($sqltxt2);
-     $ret3 = $db->exec($sqltxt3);
+     $ret = $db->query($sqltxt);
+     $ret2 = $db->query($sqltxt2);
+     $ret3 = $db->query($sqltxt3);
     echo('potato');
     
      if(!$ret)
