@@ -8,6 +8,7 @@
           $this->open('restapp.db');
        }
     }
+    echo('to');
 
     //$db = new MyDB();
     $db = getDBHandle('restapp.db');
