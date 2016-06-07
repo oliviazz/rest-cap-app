@@ -33,7 +33,8 @@
         (
         Number INTEGER PRIMARY KEY NOT NULL,
         Restaurant   Text NOT NULL,
-        Time Text NOT NULL,
+        Hour Text NOT NULL,
+        Day Text NOT NULL,
         Capacity INTEGER NOT NULL);
         ";
 
