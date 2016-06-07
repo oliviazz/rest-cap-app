@@ -61,6 +61,8 @@
     
      try{
 	    $db->query($sqltxt);
+	    $db->query($sqltxt2);
+	    $db->query($sqltxt3);
     }
     catch(Exception $e){
 	print_r($e);
