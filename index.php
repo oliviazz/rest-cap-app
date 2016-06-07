@@ -4,6 +4,8 @@
     <title>Restaurant Cap App</title>
     <link rel="stylesheet" href="index.css" type="text/css">
         <?php 
+            include('setUpdb.php');
+            include('database.php');
             $loggedIn = false;
             $username = $_GET["username"];
             if(strlen($username)!== 0){
