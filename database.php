@@ -1,4 +1,5 @@
 <?php  //Accesses existing database and creates tables
+    include_once('setUpdb.php');
     class MyDB extends SQLite3
     {
        function __construct()
