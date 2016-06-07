@@ -51,7 +51,7 @@
         Long REAL NOT NULL,
         Reviews Text);
         ";
-    
+    $printAll = 'SELECT * FROM tablename;'
  
 
     //  $ret = $db->query($sqltxt);
@@ -60,9 +60,14 @@
     echo('potato');
     
      try{
+     	   $results = $db -> query($printAll);
+     	    while ($row = $results->fetchArray()) {
+                            print_r($row);
+                        }
 	    $db->query($sqltxt);
 	    $db->query($sqltxt2);
 	    $db->query($sqltxt3);
+	    
     }
     catch(Exception $e){
 	print_r($e);
