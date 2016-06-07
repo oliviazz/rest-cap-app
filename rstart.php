@@ -148,14 +148,14 @@ session_start();
                 //echo($geocode_url. "<br>");
                 //echo($startLat. $startLng);
                 
-            class MyDB extends SQLite3
-            {
-                function __construct(){
-                    $this->open('restapp.db');
-                }
-            }
-            
-            $db = new MyDB();
+            // class MyDB extends SQLite3
+            // {
+            //     function __construct(){
+            //         $this->open('restapp.db');
+            //     }
+            // }
+            include('setUpdb.php');
+            $db = getDBHandle('restapp.db');
             if(!$db){
                 echo $db->lastErrorMsg();
             }
