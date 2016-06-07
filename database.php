@@ -37,8 +37,7 @@
         (
         Number INTEGER PRIMARY KEY NOT NULL,
         Restaurant   Text NOT NULL,
-        Hour Text NOT NULL,
-        Day Text NOT NULL,
+        Time Text NOT NULL,
         Capacity INTEGER NOT NULL);
         ";
 
@@ -75,5 +74,6 @@
      {
          echo "Table2 created successfully\n";
      }
+     echo('e');
      $db->close();
  ?>
