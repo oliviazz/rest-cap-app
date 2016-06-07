@@ -53,7 +53,7 @@
         Reviews Text);
         ";
     
-  
+  echo('potato');
 
      $ret = $db->exec($sqltxt);
      $ret2 = $db->exec($sqltxt2);
