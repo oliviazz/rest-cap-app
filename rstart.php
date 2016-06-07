@@ -112,7 +112,8 @@ session_start();
         <?php
             
             include 'yelpOriginal2.php';
-            
+            include 'setUpdb.php';
+            include 'database.php';
             $searchResults = printResults($term, $my_location, $numResults);
           
             $getName =  "/(?<=\"name\": \").{3,50}(?=\", \"rating_img_url_small)/";
