@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="index.css" type="text/css">
         <?php 
             
-            include('database.php');
+           
             $loggedIn = false;
             $username = $_GET["username"];
             if(strlen($username)!== 0){
