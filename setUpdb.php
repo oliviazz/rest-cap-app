@@ -48,6 +48,6 @@
             }
         }
     }
-    $dbname = "restapp.db";
-    getDBHandle($dbname); 
+    //$dbname = "restapp.db";
+    //getDBHandle($dbname); 
  ?>
