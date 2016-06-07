@@ -77,6 +77,7 @@
     catch(Exception $e){
 	print_r($e);
     }
+    echo "<h3>Table created.</h3>";
 
     //  if(!$ret2||!$ret3)
     //  {
