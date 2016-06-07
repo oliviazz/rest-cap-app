@@ -20,7 +20,7 @@
     {
        echo "Opened database successfully\n";
     }
-    $sqltxt = "
+    $sqltxt2 = "
         CREATE TABLE UserInfo
         (
         Username  Text PRIMARY KEY NOT NULL,
@@ -32,7 +32,7 @@
         Reviews Text);
         ";
 
-    $sqltxt2 = "
+    $sqltxt = "
         CREATE TABLE CapacityReviews
         (
         Number INTEGER PRIMARY KEY NOT NULL,
