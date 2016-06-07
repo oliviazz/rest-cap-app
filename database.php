@@ -54,28 +54,38 @@
     
  
 
-     $ret = $db->query($sqltxt);
-     $ret2 = $db->query($sqltxt2);
-     $ret3 = $db->query($sqltxt3);
+    //  $ret = $db->query($sqltxt);
+    //  $ret2 = $db->query($sqltxt2);
+    //  $ret3 = $db->query($sqltxt3);
     echo('potato');
     
-     if(!$ret)
-     {
-         echo "ohno";//$db->lastErrorMsg();
-     }
-     else
-     {
-         echo "Table created successfully\n";
-     }
-         echo('peeee');
-     if(!$ret2||!$ret3)
-     {
-         echo $db->lastErrorMsg();
-     }
-     else
-     {
-         echo "Table2 created successfully\n";
-     }
-     echo('e');
+     try{
+	    $db->query($sqltxt);
+    }
+    catch(Exception $e){
+	print_r($e);
+    }
+     try{
+	    $db->query($sqltxt2);
+    }
+    catch(Exception $e){
+	print_r($e);
+    }
+     try{
+	    $db->query($sqltxt3);
+    }
+    catch(Exception $e){
+	print_r($e);
+    }
+
+    //  if(!$ret2||!$ret3)
+    //  {
+    //      echo $db->lastErrorMsg();
+    //  }
+    //  else
+    //  {
+    //      echo "Table2 created successfully\n";
+    //  }
+    //  echo('e');
      $db->close();
  ?>
