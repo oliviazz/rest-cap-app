@@ -1,6 +1,6 @@
-- Author: Olivia Zhang 
-## Restaurant Capacity Tracker 
-# Senior Research Project 2015-2016
+-Author: Olivia Zhang 
+# Restaurant Capacity Tracker 
+## Computer Systems Senior Research Project 2015-2016
 
 Application that provides estimates of current restaurant capacity using real-time data from Yelp, Google Maps, and OpenTable.
 Users can plan a better dining experience by choosing a without having to compromise for 
