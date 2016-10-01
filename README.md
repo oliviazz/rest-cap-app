@@ -1,6 +1,6 @@
 -Author: Olivia Zhang 
 # Restaurant Capacity Tracker 
-### Computer Systems Senior Research Project 2015-2016
+**_Computer Systems Senior Research Project 2015-2016_**
 
 ## Overview slides
 
